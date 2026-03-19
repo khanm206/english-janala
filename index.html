@@ -9,10 +9,82 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- CSS added -->
     <link rel="stylesheet" href="styles.css">
+    <!-- logo -->
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>English Janala</title>
 </head>
 
-<body>
+
+<body class="pop max-w-[1920px] mx-auto">
+    <header>
+        <nav>
+            <div class="navbar bg-primary/10 shadow-sm px-2
+            lg:px-4">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="-1"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            <li>
+                                <a class="btn btn-outline btn-primary"><i
+                                        class="fa-solid fa-circle-question"></i>FAQ</a>
+                            </li>
+
+                            <li>
+                                <a class="btn  btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <a class="btn btn-ghost lg:text-xl"><span class="lg:text-xl font-bold">English</span>
+                        <img src="assets/logo.png" alt="Logo">
+                        <span class="hind lg:text-xl">জানালা</span></a>
+                </div>
+
+                <div class="navbar-end space-x-1.5">
+                    <div class="space-x-1.5 hidden lg:flex">
+                        <a class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i>FAQ</a>
+                        <a class="btn  btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</a>
+                    </div>
+                    <a class="btn  btn-outline btn-primary"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <section id="banner" class="mx-2 lg:mx-4">
+
+            <div class="hero">
+                <div class="hero-content flex-col lg:flex-row-reverse">
+                    <img src="assets/hero-student.png" class="" />
+                    <div>
+                        <h1 class="text-5xl font-bold"><span class="text-[#00BCFF]">English</span> is Easy!!</h1>
+                        <p class="py-6 hind lg:text-lg">
+                            আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান,
+                            আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ
+                        </p>
+                        <div class="flex flex-col space-y-2">
+                            <input type="text" placeholder="Enter Your Name" class="input" />
+                            <input type="password" placeholder="Enter Your Password" class="input" />
+                            <button class="btn btn-primary w-fit">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </header>
 
 </body>
 
