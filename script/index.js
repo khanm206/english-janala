@@ -52,7 +52,7 @@ const loadWordCard = (words) => {
   for (let word of words) {
     const wordCard = document.createElement(`div`);
 
-    if (words.length < 3) {
+    if (words.length == 1) {
       wordCard.classList.add(
         "col-span-1",
         "md:col-span-2",
@@ -62,7 +62,7 @@ const loadWordCard = (words) => {
     }
 
     wordCard.innerHTML = `
-            <div class="bg-white p-10 text-center space-y-4 rounded-xl">
+            <div class="bg-white p-10 text-center space-y-4 rounded-xl h-full">
             <h1 class="text-3xl font-bold">${word.word ? word.word : "শব্দ পাওয়া যায়নি!"}</h1>
             <p class="text-xl">Meaning/Pronounciation</p>
             <p class="hind text-3xl">"${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি!"} / ${word.pronunciation ? word.pronunciation : "উচ্চারণ পাওয়া যায়নি!"}"</p>
@@ -150,13 +150,14 @@ document.getElementById(`search-btn`).addEventListener(`click`, () => {
     .then((data) => {
       const allWords = data.data;
       const filterWords = allWords.filter((word) =>
-        word.word.toLowerCase().includes(searchValue),
+        word.word.toLowerCase().startsWith(searchValue),
       );
       if (filterWords.length == 0) {
-        document.getElementById(`search-alert`).classList.remove(`hidden`);
+        document.getElementById(`word-container`).innerHTML =
+          `<div class="hind text-center w-full md:col-span-2 lg:col-span-3">
+        <p class="text-3xl">কোনো শব্দ পাওয়া যায়নি!</p>
+    </div>`;
         return;
-      } else {
-        document.getElementById(`search-alert`).classList.add(`hidden`);
       }
       loadWordCard(filterWords);
     });
