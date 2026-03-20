@@ -144,6 +144,9 @@ document.getElementById(`search-btn`).addEventListener(`click`, () => {
   removeActive();
   const input = document.getElementById(`search-input`);
   const searchValue = input.value.trim().toLowerCase();
+  if (searchValue === "") {
+    return;
+  }
 
   fetch(`https://openapi.programming-hero.com/api/words/all`)
     .then((r) => r.json())
