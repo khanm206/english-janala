@@ -147,7 +147,7 @@ document.getElementById(`search-btn`).addEventListener(`click`, () => {
   if (searchValue === "") {
     return;
   }
-
+  spinner(true);
   fetch(`https://openapi.programming-hero.com/api/words/all`)
     .then((r) => r.json())
     .then((data) => {
@@ -160,6 +160,7 @@ document.getElementById(`search-btn`).addEventListener(`click`, () => {
           `<div class="hind text-center w-full md:col-span-2 lg:col-span-3">
         <p class="text-3xl">কোনো শব্দ পাওয়া যায়নি!</p>
     </div>`;
+        spinner(false);
         return;
       }
       loadWordCard(filterWords);
