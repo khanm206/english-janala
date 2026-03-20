@@ -52,8 +52,17 @@ const loadWordCard = (words) => {
   for (let word of words) {
     const wordCard = document.createElement(`div`);
 
+    if (words.length < 3) {
+      wordCard.classList.add(
+        "col-span-1",
+        "md:col-span-2",
+        "lg:col-span-3",
+        "mx-auto",
+      );
+    }
+
     wordCard.innerHTML = `
-            <div class="bg-white p-10 text-center space-y-4 h-full rounded-xl">
+            <div class="bg-white p-10 text-center space-y-4 rounded-xl">
             <h1 class="text-3xl font-bold">${word.word ? word.word : "শব্দ পাওয়া যায়নি!"}</h1>
             <p class="text-xl">Meaning/Pronounciation</p>
             <p class="hind text-3xl">"${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি!"} / ${word.pronunciation ? word.pronunciation : "উচ্চারণ পাওয়া যায়নি!"}"</p>
@@ -130,3 +139,25 @@ const spinner = (status) => {
 };
 
 loadLessons();
+
+document.getElementById(`search-btn`).addEventListener(`click`, () => {
+  removeActive();
+  const input = document.getElementById(`search-input`);
+  const searchValue = input.value.trim().toLowerCase();
+
+  fetch(`https://openapi.programming-hero.com/api/words/all`)
+    .then((r) => r.json())
+    .then((data) => {
+      const allWords = data.data;
+      const filterWords = allWords.filter((word) =>
+        word.word.toLowerCase().includes(searchValue),
+      );
+      if (filterWords.length == 0) {
+        document.getElementById(`search-alert`).classList.remove(`hidden`);
+        return;
+      } else {
+        document.getElementById(`search-alert`).classList.add(`hidden`);
+      }
+      loadWordCard(filterWords);
+    });
+});
