@@ -17,3 +17,8 @@
   font-family: "Inter", sans-serif;
   font-style: normal;
 }
+
+.active {
+  background-color: #422ad5;
+  color: white;
+}
