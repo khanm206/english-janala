@@ -94,8 +94,14 @@
         </div>
     </section>
 
-    <section id="word-container" class="lg:w-11/12 mx-auto h-full p-10 bg-gray-100 rounded-xl my-10 ">
-        <div class="text-center space-y-2">
+    <section class="flex justify-center items-center">
+        <span id="spinner" class="loading loading-spinner loading-xl mt-8 hidden "></span>
+
+    </section>
+
+    <section id="word-container"
+        class="lg:w-11/12 mx-auto h-full p-10 bg-gray-100 rounded-xl my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch gap-4">
+        <div class="text-center space-y-2 w-full md:col-span-2 lg:col-span-3">
             <p class="hind text-gray-600">আপনি এখনো কোনো লেসন নির্বাচন করেননি</p>
             <h2 class="hind text-3xl">একটি Lesson Select করুন।</h2>
         </div>
@@ -103,7 +109,7 @@
 
 
 
-    <dialog id="my_modal_1" class="modal">
+    <dialog id="modal" class="modal">
 
     </dialog>
 

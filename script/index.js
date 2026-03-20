@@ -18,6 +18,7 @@ const displayLesson = (lessons) => {
 };
 
 const levelWords = (level) => {
+  spinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${level}`;
   fetch(url)
     .then((r) => r.json())
@@ -39,41 +40,14 @@ const loadWordCard = (words) => {
   wordContainer.innerHTML = ``;
 
   if (words.length == 0) {
-    wordContainer.classList.remove(
-      "flex",
-      "flex-col",
-      "md:grid",
-      "md:grid-cols-2",
-      "lg:grid-cols-3",
-      "lg:items-stretch",
-      "gap-4",
-    );
-    wordContainer.innerHTML = `        <div class="text-center space-y-2 w-full">
+    wordContainer.innerHTML = `        <div class="text-center space-y-2 w-full md:col-span-2 lg:col-span-3">
             <img class="w-30 mx-auto" src="assets/alert-error.png" alt="Error">
             <p class="hind text-lg">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
             <h2 class="text-3xl font-semibold hind">নেক্সট Lesson এ যান</h2>
         </div>`;
+    spinner(false);
     return;
   }
-
-  wordContainer.classList.remove(
-    "flex",
-    "flex-col",
-    "md:grid",
-    "md:grid-cols-2",
-    "lg:grid-cols-3",
-    "lg:items-stretch",
-    "gap-4",
-  );
-  wordContainer.classList.add(
-    "flex",
-    "flex-col",
-    "md:grid",
-    "md:grid-cols-2",
-    "lg:grid-cols-3",
-    "lg:items-stretch",
-    "gap-4",
-  );
 
   for (let word of words) {
     const wordCard = document.createElement(`div`);
@@ -97,6 +71,7 @@ const loadWordCard = (words) => {
 
     wordContainer.append(wordCard);
   }
+  spinner(false);
 };
 
 const loadModal = (id) => {
@@ -104,17 +79,20 @@ const loadModal = (id) => {
   fetch(url)
     .then((r) => r.json())
     .then((word) => wordModal(word.data));
-  my_modal_1.showModal();
+  modal.showModal();
 };
 
 const wordModal = (word) => {
-  const modal = document.getElementById(`my_modal_1`);
+  const modal = document.getElementById(`modal`);
   modal.innerHTML = ``;
   const synonyms = word.synonyms;
   let synonymsHtml = ``;
-  for (const synonym of synonyms) {
-    synonymsHtml += `<p class="bg-[#D7E4EF]/60 py-1 px-2 rounded-lg border-2 border-[#D7E4EF]/80">${synonym ? synonym : "সমার্থক শব্দ পাওয়া যায়নি!"}</p>`;
-  }
+  if (synonyms.length == 0) {
+    synonymsHtml = `<p class="bg-[#D7E4EF]/60 py-1 px-2 rounded-lg border-2 border-[#D7E4EF]/80">সমার্থক শব্দ পাওয়া যায়নি!</p>`;
+  } else
+    for (const synonym of synonyms) {
+      synonymsHtml += `<p class="bg-[#D7E4EF]/60 py-1 px-2 rounded-lg border-2 border-[#D7E4EF]/80">${synonym ? synonym : "সমার্থক শব্দ পাওয়া যায়নি!"}</p>`;
+    }
   modal.innerHTML = `
           <div class="modal-box">
             <div class="border-3 border-primary/20 p-5 rounded-lg">
@@ -139,6 +117,16 @@ const wordModal = (word) => {
             </div>
         </div>
   `;
+};
+
+const spinner = (status) => {
+  if (status) {
+    document.getElementById(`spinner`).classList.remove(`hidden`);
+    document.getElementById(`word-container`).classList.add(`hidden`);
+  } else {
+    document.getElementById(`spinner`).classList.add(`hidden`);
+    document.getElementById(`word-container`).classList.remove(`hidden`);
+  }
 };
 
 loadLessons();
