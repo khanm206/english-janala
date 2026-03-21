@@ -4,6 +4,12 @@ const loadLessons = () => {
     .then((obj) => displayLesson(obj.data));
 };
 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-GB"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 const displayLesson = (lessons) => {
   const levelContainer = document.getElementById(`level-container`);
   levelContainer.innerHTML = ``;
@@ -70,7 +76,7 @@ const loadWordCard = (words) => {
                 <button onclick="loadModal(${word.id})" class="btn btn-soft btn-primary p-2 rounded-lg">
                     <i class="fa-solid fa-circle-exclamation fa-lg"></i>
                 </button>
-                <button class="btn btn-soft btn-primary p-2 rounded-lg">
+                <button onclick="pronounceWord('${word.word}')" class="btn btn-soft btn-primary p-2 rounded-lg">
                     <i class="fa-solid fa-volume-high fa-lg"></i>
                 </button>
 
