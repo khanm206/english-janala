@@ -52,3 +52,30 @@ English Janala is a vocabulary learning web app that helps users improve their E
 🔄 Handling async data flow in React  
 🧠 Managing state effectively across components  
 🎯 Designing structured learning-based UI
+
+---
+
+
+---
+
+## 📌 Future Improvements
+
+🎤 Add text-to-speech pronunciation  
+🧠 Add quiz mode for practice  
+📊 Track user progress  
+⭐ Save favorite words  
+🔐 Add authentication system  
+⚡ Improve caching & performance  
+
+---
+
+## 👨‍💻 Author
+
+**Moin**  
+🐙 GitHub: https://github.com/khanm206  
+
+---
+
+## 📄 License
+
+📝 This project is open source and available under the MIT License.
