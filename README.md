@@ -55,9 +55,6 @@ English Janala is a vocabulary learning web app that helps users improve their E
 
 ---
 
-
----
-
 ## 📌 Future Improvements
 
 🎤 Add text-to-speech pronunciation  
